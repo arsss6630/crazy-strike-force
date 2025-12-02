@@ -19,6 +19,8 @@
         .subtitle { font-size: 1.1rem; opacity: 0.9; color: #e94560; }
         .game-container { max-width: 960px; margin: 20px auto; padding: 0 15px; }
         .game-frame { width: 100%; height: 600px; border: none; border-radius: 8px; box-shadow: 0 0 30px rgba(233,69,96,0.3); }
+        .fullscreen-btn { display: block; margin: 15px auto 0; padding: 12px 30px; background: linear-gradient(135deg, #e94560, #c73e54); color: white; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+        .fullscreen-btn:hover { transform: scale(1.05); box-shadow: 0 4px 20px rgba(233,69,96,0.4); }
         .content { max-width: 960px; margin: 40px auto; padding: 0 20px; }
         h2 { color: #e94560; margin: 30px 0 15px; font-size: 1.5rem; border-left: 4px solid #e94560; padding-left: 15px; }
         p { line-height: 1.8; margin-bottom: 15px; color: #b0b0b0; }
@@ -44,9 +46,22 @@
     </header>
 
     <div class="game-container">
-        <iframe class="game-frame" src="https://unblocked-games.s3.amazonaws.com/games/2023/unity/crazy-strike-force/index.html" allowfullscreen allow="fullscreen; autoplay; encrypted-media; gyroscope; accelerometer; pointer-lock; gamepad"></iframe>
-        <p style="text-align: center; margin-top: 10px; color: #666; font-size: 0.9rem;">Press F11 for fullscreen or click the expand button in game</p>
+        <iframe id="gameFrame" class="game-frame" src="https://unblocked-games.s3.amazonaws.com/games/2023/unity/crazy-strike-force/index.html" allowfullscreen allow="fullscreen; autoplay; encrypted-media; gyroscope; accelerometer; pointer-lock; gamepad"></iframe>
+        <button class="fullscreen-btn" onclick="toggleFullscreen()">Full Screen</button>
     </div>
+
+    <script>
+        function toggleFullscreen() {
+            const iframe = document.getElementById('gameFrame');
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.webkitRequestFullscreen) {
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) {
+                iframe.msRequestFullscreen();
+            }
+        }
+    </script>
 
     <div class="content">
         <h2>About Crazy Strike Force</h2>
